@@ -11,9 +11,9 @@ import rpg.api.packethandler.packet.PacketPing;
 import rpg.api.packethandler.packet.PacketPong;
 
 public abstract class Server extends PacketRegistry {
-	private final ServerSocket socket;
-	private final Thread acceptingThread;
-	private final Server INSTANCE = this;
+	private final ServerSocket	socket;
+	private final Thread		acceptingThread;
+	private final Server		INSTANCE	= this;
 	
 	protected final HashMap<Socket, ClientConnection> clients = new HashMap<>();
 	
@@ -24,7 +24,7 @@ public abstract class Server extends PacketRegistry {
 			
 			@Override
 			public void run() {
-				while(!isInterrupted())
+				while( !isInterrupted())
 					try {
 						final Socket client = socket.accept();
 						
@@ -36,7 +36,7 @@ public abstract class Server extends PacketRegistry {
 						clients.get(client).startListening();
 						
 						clients.get(client).sendPacket(clients.get(client).getPacket(0, 0));
-					}catch(final IOException e) {
+					} catch(final IOException e) {
 						e.printStackTrace();
 					}
 			}
@@ -58,20 +58,19 @@ public abstract class Server extends PacketRegistry {
 	}
 	
 	/**
-	 * Sends the {@link Packet} 'packet' to the {@link ClientConnection}
-	 * associated with the {@link Socket} 'client'.
+	 * Sends the {@link Packet} 'packet' to the {@link ClientConnection} associated with the {@link Socket} 'client'.
 	 *
-	 * @param client
-	 *            - the {@link Socket}
-	 * @param packet
-	 *            - the {@link Packet}
+	 * @param  client
+	 *                                      - the {@link Socket}
+	 * @param  packet
+	 *                                      - the {@link Packet}
 	 * @throws IOException
-	 *             if an I/O error occures
+	 *                                      if an I/O error occures
 	 * @throws IllegalArgumentException
-	 *             if 'client' hasn't an associated {@link ClientConnection}
+	 *                                      if 'client' hasn't an associated {@link ClientConnection}
 	 */
 	public void sendPacket(Socket client, Packet packet) throws IOException, IllegalArgumentException {
-		if(!clients.containsKey(client)) throw new IllegalArgumentException("This client is not connected to this server");
+		if( !clients.containsKey(client)) throw new IllegalArgumentException("This client is not connected to this server");
 		
 		clients.get(client).sendPacket(packet);
 	}
@@ -79,11 +78,11 @@ public abstract class Server extends PacketRegistry {
 	/**
 	 * Sends the {@link Packet} 'packet' to all connected sockets.
 	 *
-	 * @param packet
-	 *            - the {@link Packet}
+	 * @param  packet
+	 *                         - the {@link Packet}
 	 * @throws IOException
-	 *             if an I/O error occures
-	 * @see #sendPacket(Socket, Packet)
+	 *                         if an I/O error occures
+	 * @see                #sendPacket(Socket, Packet)
 	 */
 	public void broadcastPacket(Packet packet) throws IOException {
 		for(final Socket client : clients.keySet())

@@ -12,7 +12,7 @@ public abstract class Client extends Connection {
 	private static Socket socket;
 	
 	public Client(String host, int port) throws UnknownHostException, IOException {
-		super((socket = new Socket(host, port)).getOutputStream());
+		super( (socket = new Socket(host, port)).getOutputStream());
 		
 		initListeningThread(socket);
 		
@@ -21,32 +21,30 @@ public abstract class Client extends Connection {
 	}
 	
 	/**
-	 * Sends the the {@link Packet} with the 'id' in the 'phase' to the
-	 * connected server.
+	 * Sends the the {@link Packet} with the 'id' in the 'phase' to the connected server.
 	 *
-	 * @param phase
-	 *            - the {@link int}
-	 * @param id
-	 *            - the {@link int}
+	 * @param  phase
+	 *                         - the {@link int}
+	 * @param  id
+	 *                         - the {@link int}
 	 * @throws IOException
-	 *             if an I/O error occures
+	 *                         if an I/O error occures
 	 */
 	public void sendPacket(int phase, int id) throws IOException {
 		sendPacket(getPacket(phase, id));
 	}
 	
 	/**
-	 * Sends the the {@link Packet} with the 'id' in the 'phase' with the
-	 * {@link Object}[] 'objects' as arguments to the connected server.
+	 * Sends the the {@link Packet} with the 'id' in the 'phase' with the {@link Object}[] 'objects' as arguments to the connected server.
 	 *
-	 * @param phase
-	 *            - the {@link int}
-	 * @param id
-	 *            - the {@link int}
-	 * @param objects
-	 *            - the {@link Object}[]
+	 * @param  phase
+	 *                         - the {@link int}
+	 * @param  id
+	 *                         - the {@link int}
+	 * @param  objects
+	 *                         - the {@link Object}[]
 	 * @throws IOException
-	 *             if an I/O error occures
+	 *                         if an I/O error occures
 	 */
 	public void sendPacket(int phase, int id, Object... objects) throws IOException {
 		sendPacket(getPacket(phase, id), objects);

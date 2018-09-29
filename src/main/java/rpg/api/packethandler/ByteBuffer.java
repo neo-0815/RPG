@@ -6,13 +6,14 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 /**
- * A class to store bytes that will be send through an {@link OutputStream} and
- * to read bytes from an {@link InputStream}.
+ * A class to store bytes that will be send through an {@link OutputStream} and to read bytes from an {@link InputStream}.
  */
 public class ByteBuffer {
 	private final ArrayList<Byte> bytes = new ArrayList<>();
 	
-	private int limit = -1, writeCursor = 0, readCursor = 0;
+	private int limit = -1,
+		writeCursor = 0,
+		readCursor = 0;
 	
 	public ByteBuffer() {}
 	
@@ -122,8 +123,7 @@ public class ByteBuffer {
 	}
 	
 	/**
-	 * Returns all non-written bytes of this {@link ByteBuffer} in form of a
-	 * byte[].
+	 * Returns all non-written bytes of this {@link ByteBuffer} in form of a byte[].
 	 *
 	 * @return the {@link byte}[]
 	 */
@@ -137,14 +137,13 @@ public class ByteBuffer {
 	}
 	
 	/**
-	 * Write all non-written bytes of this {@link ByteBuffer} to the
-	 * {@link OutputStream} 'out'.
+	 * Write all non-written bytes of this {@link ByteBuffer} to the {@link OutputStream} 'out'.
 	 *
-	 * @param out
-	 *            - the {@link OutputStream} to which it will write
-	 * @return the current instance of this class
+	 * @param  out
+	 *                         - the {@link OutputStream} to which it will write
+	 * @return             the current instance of this class
 	 * @throws IOException
-	 *             if an I/O error occures
+	 *                         if an I/O error occures
 	 */
 	public ByteBuffer writeToOutputStream(OutputStream out) throws IOException {
 		out.write(toByteArray());
@@ -153,14 +152,13 @@ public class ByteBuffer {
 	}
 	
 	/**
-	 * Read all bytes from the {@link InputStream} 'in' and store it in the
-	 * current instance.
+	 * Read all bytes from the {@link InputStream} 'in' and store it in the current instance.
 	 *
-	 * @param in
-	 *            - the {@link InputStream} from which it will read
-	 * @return the current instance of this class
+	 * @param  in
+	 *                         - the {@link InputStream} from which it will read
+	 * @return             the current instance of this class
 	 * @throws IOException
-	 *             if an I/O error occurres.
+	 *                         if an I/O error occurres.
 	 */
 	public ByteBuffer readFromInputStream(InputStream in) throws IOException {
 		while(in.available() > 0)

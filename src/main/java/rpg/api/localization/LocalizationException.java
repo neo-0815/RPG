@@ -3,12 +3,14 @@ package rpg.api.localization;
 import java.util.ArrayList;
 
 public class LocalizationException extends RuntimeException {
-	private static final long serialVersionUID = 7639671735833895387L;
-	private final String baseMessage = "Error in path '%path%'";
+	private static final long	serialVersionUID	= 7639671735833895387L;
+	private final String		baseMessage			= "Error in path '%path%'";
 	
-	private final int line;
-	private final String path, file, specifier;
-	private final Class<?> specifierClass;
+	private final int		line;
+	private final String	path,
+		file,
+		specifier;
+	private final Class<?>	specifierClass;
 	
 	public LocalizationException(String path, String file) {
 		this(path, file, -1);
@@ -44,7 +46,7 @@ public class LocalizationException extends RuntimeException {
 		if(specifier != null && !specifier.isEmpty()) if(specifierClass != null) base += " with wrong-matched [" + specifierClass + "]" + " specifier '" + specifier + "'";
 		else base += " with unmatched specifier '" + specifier + "'";
 		
-		if(!list.isEmpty()) base += " (" + list.toString().substring(1).substring(0, list.toString().length() - 2) + ")";
+		if( !list.isEmpty()) base += " (" + list.toString().substring(1).substring(0, list.toString().length() - 2) + ")";
 		
 		return base;
 	}

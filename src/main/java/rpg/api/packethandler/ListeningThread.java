@@ -9,15 +9,13 @@ import rpg.api.packethandler.packet.Packet;
 import rpg.api.packethandler.packet.PacketPong;
 
 /**
- * This thread is listening to an {@link InputStream}, reading the transfered
- * bytes,<br>
- * writing these bytes to a {@link ByteBuffer}, executing the matching
- * packet<br>
+ * This thread is listening to an {@link InputStream}, reading the transfered bytes,<br>
+ * writing these bytes to a {@link ByteBuffer}, executing the matching packet<br>
  * (and if possible sending the response packet via an {@link OutputStream}).
  */
 public abstract class ListeningThread extends Thread {
-	private final InputStream in;
-	private final OutputStream out;
+	private final InputStream	in;
+	private final OutputStream	out;
 	
 	public ListeningThread(Socket socket) throws IOException {
 		super("Listening-Thread -- " + socket.getLocalAddress() + ":" + socket.getLocalPort());
@@ -35,7 +33,7 @@ public abstract class ListeningThread extends Thread {
 	
 	@Override
 	public void run() {
-		while(!isInterrupted())
+		while( !isInterrupted())
 			try {
 				if(in.available() > 0) {
 					final ByteBuffer buf = new ByteBuffer().readFromInputStream(in);
@@ -50,7 +48,7 @@ public abstract class ListeningThread extends Thread {
 					
 					if(packet.response() != null) connection().sendPacket(packet.response(), out);
 				}
-			}catch(final IOException e) {
+			} catch(final IOException e) {
 				e.printStackTrace();
 			}
 	}

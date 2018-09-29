@@ -9,17 +9,18 @@ public class PacketRegistry {
 	protected final HashMap<Integer, HashMap<Integer, Packet>> packets = new HashMap<>();
 	
 	public void registerPacket(Packet packet) {
-		final int phase = packet.packetPhase(), id = packet.packetId();
+		final int phase = packet.packetPhase(),
+			id = packet.packetId();
 		
-		if(!packets.containsKey(phase)) packets.put(phase, new HashMap<>());
+		if( !packets.containsKey(phase)) packets.put(phase, new HashMap<>());
 		if(packets.get(phase).containsKey(id)) throw new IllegalArgumentException("Packet with id('" + id + "') is registered");
 		
 		packets.get(phase).put(id, packet);
 	}
 	
 	public Packet getPacket(int phase, int id) {
-		if(!packets.containsKey(phase)) throw new IllegalArgumentException("Phase '" + phase + "' doesn't exist");
-		if(!packets.get(phase).containsKey(id)) throw new IllegalArgumentException("Packet with id('" + id + "') isn't registered");
+		if( !packets.containsKey(phase)) throw new IllegalArgumentException("Phase '" + phase + "' doesn't exist");
+		if( !packets.get(phase).containsKey(id)) throw new IllegalArgumentException("Packet with id('" + id + "') isn't registered");
 		
 		return packets.get(phase).get(id);
 	}

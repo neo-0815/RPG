@@ -7,8 +7,8 @@ import rpg.api.packethandler.Connection;
 import rpg.api.packethandler.packet.Packet;
 
 public class ClientConnection extends Connection {
-	private final Server server;
-	private final Socket client;
+	private final Server	server;
+	private final Socket	client;
 	
 	public ClientConnection(Server server, Socket client) throws IOException {
 		super(client.getOutputStream());

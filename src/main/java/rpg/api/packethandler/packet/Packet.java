@@ -24,7 +24,7 @@ public abstract class Packet {
 	 * Reads data from the {@link ByteBuffer} 'buf'.
 	 *
 	 * @param buf
-	 *            - the {@link ByteBuffer}
+	 *                - the {@link ByteBuffer}
 	 */
 	public abstract void fromBuffer(ByteBuffer buf);
 	
@@ -32,7 +32,7 @@ public abstract class Packet {
 	 * Writes data to the {@link ByteBuffer} 'buf'.
 	 *
 	 * @param buf
-	 *            - the {@link ByteBuffer}
+	 *                - the {@link ByteBuffer}
 	 */
 	public abstract void toBuffer(ByteBuffer buf);
 	
@@ -40,13 +40,12 @@ public abstract class Packet {
 	 * Inits this packet with {@link Object}[] as arguments.
 	 *
 	 * @param objects
-	 *            - the {@link Object}[]
+	 *                    - the {@link Object}[]
 	 */
 	public void init(Object... objects) {}
 	
 	/**
-	 * Returns a {@link HashMap} with strings as keys and associated objects as
-	 * values.
+	 * Returns a {@link HashMap} with strings as keys and associated objects as values.
 	 *
 	 * @return the {@link HashMap}<{@link String}, {@link Object}>
 	 */
@@ -59,17 +58,15 @@ public abstract class Packet {
 	}
 	
 	/**
-	 * Returns a {@link HashMap} with strings as keys and associated objects as
-	 * values.
+	 * Returns a {@link HashMap} with strings as keys and associated objects as values.
 	 *
 	 * @param fields
-	 *            - the {@link HashMap<String,Object>}
+	 *                   - the {@link HashMap<String,Object>}
 	 */
 	public void values(HashMap<String, Object> fields) {}
 	
 	/**
-	 * Gets the response {@link Packet} (can be {@code null} if no response
-	 * packet is defined).
+	 * Gets the response {@link Packet} (can be {@code null} if no response packet is defined).
 	 *
 	 * @return the {@link Packet}
 	 */
