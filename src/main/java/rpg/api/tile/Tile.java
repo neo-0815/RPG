@@ -3,6 +3,7 @@ package rpg.api.tile;
 import java.awt.Graphics2D;
 
 import rpg.api.Vec2D;
+import rpg.api.Collision.Hitbox;
 import rpg.api.gfx.ISprite;
 import rpg.api.gfx.Sprite;
 
